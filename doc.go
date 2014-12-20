@@ -4,7 +4,7 @@
 
 // validation 数据验证。
 //  v := validation.New()
-//  v.Apply(validator.IsNumber("123", "必须为数值", "num"))
+//  v.Apply(validator.IsNumber("123"), "必须为数值", "num")
 package validation
 
 const Version = "0.1.0.141220"
