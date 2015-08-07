@@ -1,29 +1,28 @@
-validation [![Build Status](https://travis-ci.org/issue9/validation.svg?branch=master)](https://travis-ci.org/issue9/validation)
+is [![Build Status](https://travis-ci.org/issue9/is.svg?branch=master)](https://travis-ci.org/issue9/is)
 ======
 
-一个简单的验证管理器及一系列验证函数：
+一些常用的验证函数：
 ```go
-v := validation.New()
 // 判断是否为数值
-v.Apply(validator.IsNumber("123"), "必须为数值", "num")
+is.Number("123")
 
 // 判断是否为ISBN序列号
-v.Apply(validator.IsISBN("1-919876-03-0"), "必须为一个ISBN序列号", "isbn")
+is.ISBN("1-919876-03-0")
 ```
 
 ### 安装
 
 ```shell
-go get github.com/issue9/validation
+go get github.com/issue9/is
 ```
 
 
 ### 文档
 
-[![Go Walker](http://gowalker.org/api/v1/badge)](http://gowalker.org/github.com/issue9/validation)
-[![GoDoc](https://godoc.org/github.com/issue9/validation?status.svg)](https://godoc.org/github.com/issue9/validation)
+[![Go Walker](http://gowalker.org/api/v1/badge)](http://gowalker.org/github.com/issue9/is)
+[![GoDoc](https://godoc.org/github.com/issue9/is?status.svg)](https://godoc.org/github.com/issue9/is)
 
 
 ### 版权
 
-[![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://github.com/issue9/validation/blob/master/LICENSE)
+本项目采用[MIT](http://opensource.org/licenses/MIT)开源授权许可证，完整的授权说明可在[LICENSE](LICENSE)文件中找到。

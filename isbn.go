@@ -2,7 +2,7 @@
 // Use of this source code is governed by a MIT
 // license that can be found in the LICENSE file.
 
-package validator
+package is
 
 import (
 	"bytes"
@@ -11,7 +11,7 @@ import (
 // 有关ISBN的算法及其它相关内容，可参照http://zh.wikipedia.org/wiki/%E5%9B%BD%E9%99%85%E6%A0%87%E5%87%86%E4%B9%A6%E5%8F%B7
 
 // 判断是否为合法的ISBN串号。可以同时判断ISBN10和ISBN13
-func IsISBN(val interface{}) bool {
+func ISBN(val interface{}) bool {
 	var result []byte
 
 	switch v := val.(type) {
@@ -40,7 +40,7 @@ func IsISBN(val interface{}) bool {
 }
 
 // 判断是否为合法的ISBN10
-func IsISBN10(val []byte) bool {
+func ISBN10(val []byte) bool {
 	if bytes.IndexByte(val, '-') == -1 {
 		return isISBN10(val)
 	}
@@ -48,7 +48,7 @@ func IsISBN10(val []byte) bool {
 }
 
 // 判断是否为合法的ISBN13
-func IsISBN13(val []byte) bool {
+func ISBN13(val []byte) bool {
 	if bytes.IndexByte(val, '-') == -1 {
 		return isISBN13(val)
 	}

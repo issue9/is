@@ -2,7 +2,7 @@
 // Use of this source code is governed by a MIT
 // license that can be found in the LICENSE file.
 
-package validator
+package is
 
 // 我国现行的身份证号码有两种标准：GB11643-1989、GB11643-1999：
 //
@@ -28,21 +28,21 @@ var (
 // 若是15位则当作一代身份证，仅简单地判断各位是否都是数字；
 // 若是18位则当作二代身份证，会计算校验位是否正确；
 // 其它位数都返回false。
-func IsGb11643(val interface{}) bool {
+func GB11643(val interface{}) bool {
 	switch v := val.(type) {
 	case string:
-		return IsGb11643Bytes([]byte(v))
+		return gb11643Bytes([]byte(v))
 	case []byte:
-		return IsGb11643Bytes(v)
+		return gb11643Bytes(v)
 	case []rune:
-		return IsGb11643Bytes([]byte(string(v)))
+		return gb11643Bytes([]byte(string(v)))
 	default:
 		return false
 	}
 }
 
 // 判断一个身份证是否符合gb11643标准。
-func IsGb11643Bytes(val []byte) bool {
+func gb11643Bytes(val []byte) bool {
 	if len(val) == 15 {
 		// 15位，只检测是否包含非数字字符。
 		for i := 0; i < 15; i++ {
