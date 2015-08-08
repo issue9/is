@@ -36,8 +36,42 @@ func Nil(val interface{}) bool {
 	return assert.IsNil(val)
 }
 
-// 是否为空，若是窝器类型，长度为0也将返回true，具体可参考
+// 是否为空，若是容器类型，长度为0也将返回true，具体可参考
 // github.com/assert.IsEmpty()函数。
 func Empty(val interface{}) bool {
 	return assert.IsEmpty(val)
+}
+
+// 判断一个字符串是否为合法的16进制颜色表示法。
+func HexColor(val interface{}) bool {
+	var bs []byte
+	switch v := val.(type) {
+	case []byte:
+		bs = v
+	case []rune:
+		bs = []byte(string(v))
+	case string:
+		bs = []byte(v)
+	default:
+		return false
+	}
+
+	if len(bs) != 4 && len(bs) != 7 {
+		return false
+	}
+
+	if bs[0] != '#' {
+		return false
+	}
+
+	for _, v := range bs[1:] {
+		switch {
+		case '0' <= v && v <= '9':
+		case 'a' <= v && v <= 'f':
+		case 'A' <= v && v <= 'F':
+		default:
+			return false
+		}
+	}
+	return true
 }
