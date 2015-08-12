@@ -37,7 +37,21 @@ func TestCNMobile(t *testing.T) {
 	a.False(CNMobile("50111111112"))     // 开头少1
 	a.False(CNMobile("+8650111111112"))  // 开头少1
 	a.False(CNMobile("8650111111112"))   // 开头少1
-	a.False(CNMobile("154111111112"))    // 不存在的前缀150
+	a.False(CNMobile("154111111112"))    // 不存在的前缀154
+}
+
+func TestCNTel(t *testing.T) {
+	a := assert.New(t)
+
+	a.True(CNTel("444488888888-4444"))
+	a.True(CNTel("3337777777-1"))
+	a.True(CNTel("333-7777777-1"))
+	a.True(CNTel("7777777"))
+	a.True(CNTel("88888888"))
+	a.True(CNTel("15011111111"))
+	a.True(CNTel("015011111111"))
+	a.True(CNTel("8615011111111"))
+	a.True(CNTel("+8615011111111"))
 }
 
 func TestURL(t *testing.T) {

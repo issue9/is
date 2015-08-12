@@ -19,9 +19,12 @@ const (
 		`(13[0-9]|` + // 130-139
 		`14[57]|` + // 145,147
 		`15[0-35-9]|` + // 150-153,155-159
-		`17[0678]|` + // 170,176,177,17u
+		`17[0678]|` + // 170,176,177,178
 		`18[0-9])` + // 180-189
 		`[0-9]{8}`
+
+	// 匹配大陆手机号或是电话号码
+	cnTelPattern = "(" + cnPhonePattern + ")|(" + cnMobilePattern + ")"
 
 	// 匹配邮箱
 	emailPattern = `[\w.-]+@[\w_-]+\w{1,}[\.\w-]+`
@@ -63,6 +66,7 @@ var (
 	url      = regexpCompile(urlPattern)
 	cnPhone  = regexpCompile(cnPhonePattern)
 	cnMobile = regexpCompile(cnMobilePattern)
+	cnTel    = regexpCompile(cnTelPattern)
 )
 
 func regexpCompile(str string) *regexp.Regexp {
@@ -95,6 +99,10 @@ func CNPhone(val interface{}) bool {
 // 验证中国大陆的手机号码
 func CNMobile(val interface{}) bool {
 	return isMatch(cnMobile, val)
+}
+
+func CNTel(val interface{}) bool {
+	return isMatch(cnTel, val)
 }
 
 // 验证一个值是否标准的URL格式。支持IP和域名等格式
