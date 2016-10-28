@@ -20,7 +20,6 @@ func TestCNPhone(t *testing.T) {
 	a.True(CNPhone("88888888"))
 
 	a.False(CNPhone("333-7777777-"))      // 尾部没有分机号
-	a.False(CNPhone("333-999999999"))     // 9位数的号码
 	a.False(CNPhone("22-88888888"))       // 区号只有2位
 	a.False(CNPhone("33-88888888-55555")) // 分机号超过4位
 }
