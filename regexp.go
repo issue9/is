@@ -88,7 +88,7 @@ func isMatch(exp *regexp.Regexp, val interface{}) bool {
 	}
 }
 
-// 验证中国大陆的电话号码。支持如下格式：
+// CNPhone 验证中国大陆的电话号码。支持如下格式：
 //  0578-12345678-1234
 //  057812345678-1234
 // 若存在分机号，则分机号的连接符不能省略。
@@ -96,36 +96,37 @@ func CNPhone(val interface{}) bool {
 	return isMatch(cnPhone, val)
 }
 
-// 验证中国大陆的手机号码
+// CNMobile 验证中国大陆的手机号码
 func CNMobile(val interface{}) bool {
 	return isMatch(cnMobile, val)
 }
 
+// CNTel 验证手机和电话类型
 func CNTel(val interface{}) bool {
 	return isMatch(cnTel, val)
 }
 
-// 验证一个值是否标准的URL格式。支持IP和域名等格式
+// URL 验证一个值是否标准的URL格式。支持IP和域名等格式
 func URL(val interface{}) bool {
 	return isMatch(url, val)
 }
 
-// 验证一个值是否为IP，可验证IP4和IP6
+// IP 验证一个值是否为IP，可验证IP4和IP6
 func IP(val interface{}) bool {
 	return isMatch(ip, val)
 }
 
-// 验证一个值是否为IP6
+// IP6 验证一个值是否为IP6
 func IP6(val interface{}) bool {
 	return isMatch(ip6, val)
 }
 
-// 验证一个值是滞为IP4
+// IP4 验证一个值是滞为IP4
 func IP4(val interface{}) bool {
 	return isMatch(ip4, val)
 }
 
-// 验证一个值是否匹配一个邮箱。
+// Email 验证一个值是否匹配一个邮箱。
 func Email(val interface{}) bool {
 	return isMatch(email, val)
 }
