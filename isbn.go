@@ -8,9 +8,9 @@ import (
 	"bytes"
 )
 
-// 有关ISBN的算法及其它相关内容，可参照http://zh.wikipedia.org/wiki/%E5%9B%BD%E9%99%85%E6%A0%87%E5%87%86%E4%B9%A6%E5%8F%B7
+// 有关 ISBN 的算法及其它相关内容，可参照http://zh.wikipedia.org/wiki/%E5%9B%BD%E9%99%85%E6%A0%87%E5%87%86%E4%B9%A6%E5%8F%B7
 
-// 判断是否为合法的ISBN串号。可以同时判断ISBN10和ISBN13
+// ISBN 判断是否为合法的ISBN串号。可以同时判断ISBN10和ISBN13
 func ISBN(val interface{}) bool {
 	var result []byte
 
@@ -39,7 +39,7 @@ func ISBN(val interface{}) bool {
 	}
 }
 
-// 判断是否为合法的ISBN10
+// ISBN 判断是否为合法的 ISBN10
 func ISBN10(val []byte) bool {
 	if bytes.IndexByte(val, '-') == -1 {
 		return isISBN10(val)
@@ -89,7 +89,7 @@ func eraseMinus(val []byte) []byte {
 	offset := 0
 	for k, v := range val {
 		if v == '-' {
-			offset += 1
+			offset++
 			continue
 		}
 
