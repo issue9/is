@@ -10,7 +10,7 @@ import (
 
 // 有关 ISBN 的算法及其它相关内容，可参照http://zh.wikipedia.org/wiki/%E5%9B%BD%E9%99%85%E6%A0%87%E5%87%86%E4%B9%A6%E5%8F%B7
 
-// ISBN 判断是否为合法的ISBN串号。可以同时判断ISBN10和ISBN13
+// ISBN 判断是否为合法的ISBN串号。可以同时判断 ISBN10 和 ISBN13
 func ISBN(val interface{}) bool {
 	var result []byte
 
@@ -39,7 +39,7 @@ func ISBN(val interface{}) bool {
 	}
 }
 
-// ISBN 判断是否为合法的 ISBN10
+// ISBN10 判断是否为合法的 ISBN10
 func ISBN10(val []byte) bool {
 	if bytes.IndexByte(val, '-') == -1 {
 		return isISBN10(val)
@@ -47,7 +47,7 @@ func ISBN10(val []byte) bool {
 	return isISBN10(eraseMinus(val))
 }
 
-// 判断是否为合法的ISBN13
+// ISBN13 判断是否为合法的 ISBN13
 func ISBN13(val []byte) bool {
 	if bytes.IndexByte(val, '-') == -1 {
 		return isISBN13(val)
@@ -55,7 +55,7 @@ func ISBN13(val []byte) bool {
 	return isISBN13(eraseMinus(val))
 }
 
-// isbn10的校验位对应的值。
+// isbn10 的校验位对应的值。
 var isbn10Map = []byte{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'x', '0'}
 
 func isISBN10(val []byte) bool {
