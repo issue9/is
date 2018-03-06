@@ -65,7 +65,7 @@ func TestURL(t *testing.T) {
 	a.True(URL("pwd:user@www.example.com:80/path/"))
 	a.True(URL("https://127.0.0.1/path/"))
 	a.True(URL("https://fe80:0:0:0:204:61ff:fe9d:f156/path/"))
-	a.True(URL("https://127.0.0.1/path//index.go?arg1=val1"))
+	a.True(URL("https://127.0.0.1/path//index.go?arg1=val1&arg2=val/2"))
 	a.True(URL("https://::1/path/index.go?arg1=val1"))
 
 	a.False(URL("https://[::1]:80/path/"))

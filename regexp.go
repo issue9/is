@@ -55,7 +55,7 @@ const (
 		"(" + ipPattern + "|(" + domainPattern + "))" + // IP 或域名
 		`(:\d{1,4})?` + // 端口
 		`(/+[a-zA-Z0-9][a-zA-Z0-9_.-]*)*/*` + // path
-		`(\?([a-zA-Z0-9_-]+(=[a-zA-Z0-9_-]*)*)*)*` // query
+		`(\?([a-zA-Z0-9_-]+(=[/a-zA-Z0-9_-]*&?)*)*)*` // query
 )
 
 var (
