@@ -53,7 +53,7 @@ const (
 	urlPattern = `((https|http|ftp|rtsp|mms)?://)?` + // 协议
 		`(([0-9a-zA-Z]+:)?[0-9a-zA-Z_-]+@)?` + // pwd:user@
 		"(" + ipPattern + "|(" + domainPattern + "))" + // IP 或域名
-		`(:\d{1,4})?` + // 端口
+		`(:\d{1,5})?` + // 端口
 		`(/+[a-zA-Z0-9][a-zA-Z0-9_.-]*)*/*` + // path
 		`(\?([a-zA-Z0-9_-]+(=[/a-zA-Z0-9_-]*&?)*)*)*` // query
 )
