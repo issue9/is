@@ -31,12 +31,14 @@ func TestCNMobile(t *testing.T) {
 	a.True(CNMobile("015011111111"))
 	a.True(CNMobile("8615011111111"))
 	a.True(CNMobile("+8615011111111"))
+	a.True(CNMobile("+8619911111111"))
 
 	a.False(CNMobile("+86150111111112")) // 尾部多个2
 	a.False(CNMobile("50111111112"))     // 开头少1
 	a.False(CNMobile("+8650111111112"))  // 开头少1
 	a.False(CNMobile("8650111111112"))   // 开头少1
 	a.False(CNMobile("154111111112"))    // 不存在的前缀154
+	a.False(CNMobile("+8619811111111"))
 }
 
 func TestCNTel(t *testing.T) {
