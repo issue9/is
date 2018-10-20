@@ -59,10 +59,12 @@ func TestURL(t *testing.T) {
 	a := assert.New(t)
 
 	a.True(URL("http://www.example.com"))
+	a.True(URL([]byte("http://example.com")))
 	a.True(URL("http://www.example.com/"))
 	a.True(URL("http://www.example.com/path/?a=b"))
 	a.True(URL("https://www.example.com:88/path1/path2"))
 	a.True(URL("ftp://pwd:user@www.example.com/index.go?a=b"))
+	a.True(URL([]byte("ftp://pwd:user@www.example.com/index.go?a=b")))
 	a.True(URL("pwd:user@www.example.com/path/"))
 	a.True(URL("pwd:user@www.example.com:80/path/"))
 	a.True(URL("https://127.0.0.1/path/"))
@@ -99,7 +101,7 @@ func TestIP6(t *testing.T) {
 	a.True(IP6("fe80::204:61ff:254.157.241.86"))                // dotted quad at the end, multiple zeroes collapsed
 	a.True(IP6("::1"))                                          // localhost
 	a.True(IP6("fe80::"))                                       // link-local prefix
-	a.True(IP6("2001::"))                                       //global unicast prefix
+	a.True(IP6("2001::"))                                       // global unicast prefix
 }
 
 func TestIP4(t *testing.T) {
