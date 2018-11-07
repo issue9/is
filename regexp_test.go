@@ -121,6 +121,7 @@ func TestEmail(t *testing.T) {
 
 	a.True(Email("email@email.com"))
 	a.True(Email("em2il@email.com.cn"))
+	a.True(Email("12345@qq.com"))
 	a.True(Email("email.test@email.com"))
 	a.True(Email("email.test@email123.com"))
 	a.True(Email("em2il@email"))
