@@ -58,6 +58,7 @@ func TestCNTel(t *testing.T) {
 func TestURL(t *testing.T) {
 	a := assert.New(t)
 
+	a.True(URL("www.example.com"))
 	a.True(URL("http://www.example.com"))
 	a.True(URL([]byte("http://example.com")))
 	a.True(URL("http://www.example.com/"))
