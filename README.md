@@ -1,6 +1,5 @@
 is
 [![Build Status](https://travis-ci.org/issue9/is.svg?branch=master)](https://travis-ci.org/issue9/is)
-[![Build status](https://ci.appveyor.com/api/projects/status/6sgm5k7kwpma6e24?svg=true)](https://ci.appveyor.com/project/caixw/is)
 ======
 
 一些常用的验证函数：
