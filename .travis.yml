@@ -7,11 +7,14 @@ os:
 
 go:
   - tip
-  - 1.12
-  - 1.11
+  - 1.12.x
+  - 1.11.x
+
+env:
+  - GO111MODULE=on
 
 script:
-  - env GO111MODULE=on go test -v -coverprofile=coverage.txt -covermode=atomic $(go list ./...)
+  - go test -v -coverprofile=coverage.txt -covermode=atomic ./...
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
