@@ -13,7 +13,14 @@ import (
 func TestString(t *testing.T) {
 	a := assert.New(t)
 
-	a.True(String("6259650871772098"))
-	a.True(String("79927398713"))
-	a.False(String("79927398710"))
+	a.True(ValidString("6259650871772098"))
+	a.True(ValidString("79927398713"))
+	a.False(ValidString("79927398710"))
+}
+
+func TestGenerateWithPrefix(t *testing.T) {
+	a := assert.New(t)
+
+	a.Equal("6259650871772098", string(GenerateWithPrefix([]byte("625965087177209"))))
+	a.True(Valid(GenerateWithPrefix([]byte("625965087177209"))))
 }
