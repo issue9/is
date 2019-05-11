@@ -8,7 +8,7 @@ import "bytes"
 
 // 有关 ISBN 的算法及其它相关内容，可参照http://zh.wikipedia.org/wiki/%E5%9B%BD%E9%99%85%E6%A0%87%E5%87%86%E4%B9%A6%E5%8F%B7
 
-// ISBN 判断是否为合法的ISBN串号。可以同时判断 ISBN10 和 ISBN13
+// ISBN 判断是否为合法的 ISBN 串号。可以同时判断 ISBN10 和 ISBN13
 func ISBN(val interface{}) bool {
 	var result []byte
 
