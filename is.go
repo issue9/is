@@ -9,6 +9,8 @@ import (
 	"reflect"
 	"strconv"
 	"time"
+
+	"github.com/issue9/is/luhn"
 )
 
 // Number 判断一个值是否可转换为数值。不支持全角数值的判断。
@@ -132,4 +134,18 @@ func HexColor(val interface{}) bool {
 		}
 	}
 	return true
+}
+
+// BandCard 是否为正确的银行卡号
+func BandCard(val interface{}) bool {
+	switch v := val.(type) {
+	case []byte:
+		return luhn.Valid(v)
+	case string:
+		return luhn.ValidString(v)
+	case []rune:
+		return luhn.ValidString(string(v))
+	default:
+		return false
+	}
 }
