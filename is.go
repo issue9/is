@@ -136,8 +136,8 @@ func HexColor(val interface{}) bool {
 	return true
 }
 
-// BandCard 是否为正确的银行卡号
-func BandCard(val interface{}) bool {
+// BankCard 是否为正确的银行卡号
+func BankCard(val interface{}) bool {
 	switch v := val.(type) {
 	case []byte:
 		return luhn.Valid(v)
