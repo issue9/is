@@ -91,5 +91,5 @@ func eraseMinus(val []byte) []byte {
 
 		val[k-offset] = v
 	}
-	return val[0 : len(val)-offset]
+	return val[:len(val)-offset]
 }

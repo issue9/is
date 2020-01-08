@@ -85,12 +85,12 @@ func Empty(val interface{}) bool {
 		return v.IsZero()
 	}
 
-	// 符合IsNil条件的，都为 Empty
+	// 符合 Nil 条件的，都为 Empty
 	if Nil(val) {
 		return true
 	}
 
-	// 长度为0的数组也是 empty
+	// 长度为 0 的数组也是 empty
 	v := reflect.ValueOf(val)
 	switch v.Kind() {
 	case reflect.Slice, reflect.Map, reflect.Chan:
