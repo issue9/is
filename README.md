@@ -12,6 +12,12 @@ is.Number("123")
 
 // 判断是否为ISBN序列号
 is.ISBN("1-919876-03-0")
+
+// 身份证验证
+is.GB11643("33232333211233432")
+
+// 银行卡验证
+is.BankCard("33232123234")
 ```
 
 安装
@@ -25,7 +31,7 @@ go get github.com/issue9/is
 ----
 
 [![Go Walker](https://gowalker.org/api/v1/badge)](https://gowalker.org/github.com/issue9/is)
-[![GoDoc](https://godoc.org/github.com/issue9/is?status.svg)](https://godoc.org/github.com/issue9/is)
+[![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-square)](https://pkg.go.dev/github.com/issue9/is)
 
 版权
 ----
