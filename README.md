@@ -1,5 +1,5 @@
 is
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fissue9%2Fis%2Fbadge%3Fref%3Dmaster&style=flat)](https://actions-badge.atrox.dev/issue9/is/goto?ref=master)
+[![Go](https://github.com/issue9/is/workflows/Go/badge.svg)](https://github.com/issue9/is)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://opensource.org/licenses/MIT)
 [![codecov](https://codecov.io/gh/issue9/is/branch/master/graph/badge.svg)](https://codecov.io/gh/issue9/is)
 ======
