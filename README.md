@@ -1,5 +1,5 @@
 is
-[![Go](https://github.com/issue9/is/workflows/Go/badge.svg)](https://github.com/issue9/is)
+[![Go](https://github.com/issue9/is/workflows/Go/badge.svg)](https://github.com/issue9/is/actions?query=workflow%3AGo)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://opensource.org/licenses/MIT)
 [![codecov](https://codecov.io/gh/issue9/is/branch/master/graph/badge.svg)](https://codecov.io/gh/issue9/is)
 ======
