@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"math"
 	"testing"
+	"time"
 
 	"github.com/issue9/assert"
 )
@@ -55,18 +56,55 @@ func TestNil(t *testing.T) {
 	a.False(Nil(y))
 }
 
-func TestEmpty(t *testing.T) {
+func TestZero(t *testing.T) {
 	a := assert.New(t)
 
-	a.True(Empty(0))
-	a.True(Empty(nil))
+	a.True(Zero(0, false))
+	a.True(Zero(nil, false))
+	a.True(Zero(nil, true))
+	a.True(Zero(0.0, false))
+	a.False(Zero(-0.0001, true))
 
-	var x interface{}
-	a.True(Empty(x))
+	var i interface{}
+	a.True(Zero(i, false))
+	a.True(Zero(i, true))
+	a.False(Zero(&i, false))
+	a.True(Zero(&i, true))
+
+	var x []string
+	a.True(Zero(x, false))
+	a.True(Zero(x, true))
+	a.False(Zero(&x, false))
+	a.True(Zero(&x, true))
+
 	x = []string{}
-	a.True(Empty(x))
+	a.True(Zero(x, false))
+	a.True(Zero(x, true))
+	a.False(Zero(&x, false))
+	a.True(Zero(&x, true))
+
 	x = []string{""}
-	a.False(Empty(x))
+	a.False(Zero(x, false))
+	a.False(Zero(x, true))
+
+	var ii interface{} = []string{}
+	a.True(Zero(ii, false))
+	a.True(Zero(ii, true))
+	a.False(Zero(&ii, false))
+	a.True(Zero(&ii, true))
+
+	a.True(Zero(time.Time{}, false))
+	a.True(Zero(time.Time{}, true))
+	a.False(Zero(&time.Time{}, false))
+	a.True(Zero(&time.Time{}, true))
+	a.False(Zero(time.Now(), false))
+	a.False(Zero(time.Now(), true))
+
+	type obj struct{ Int int }
+	a.True(Zero(obj{Int: 0}, false))
+	a.False(Zero(&obj{Int: 0}, false))
+	a.True(Zero(&obj{Int: 0}, true))
+	a.False(Zero(obj{Int: 1}, false))
 }
 
 func TestHexColor(t *testing.T) {
