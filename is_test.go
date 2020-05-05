@@ -93,6 +93,24 @@ func TestEmpty(t *testing.T) {
 	a.False(Empty(&ii, false))
 	a.True(Empty(&ii, true))
 
+	var m map[string]string
+	a.True(Empty(m, false))
+	a.True(Empty(m, true))
+	a.False(Empty(&m, false))
+	a.True(Empty(&m, true))
+
+	m = map[string]string{}
+	a.True(Empty(m, false))
+	a.True(Empty(m, true))
+	a.False(Empty(&m, false))
+	a.True(Empty(&m, true))
+
+	i = m
+	a.True(Empty(m, false))
+	a.True(Empty(m, true))
+	a.False(Empty(&m, false))
+	a.True(Empty(&m, true))
+
 	a.True(Empty(time.Time{}, false))
 	a.True(Empty(time.Time{}, true))
 	a.False(Empty(&time.Time{}, false))
@@ -143,6 +161,24 @@ func TestZero(t *testing.T) {
 	a.False(Zero(ii, true))
 	a.False(Zero(&ii, false))
 	a.False(Zero(&ii, true))
+
+	var m map[string]string
+	a.True(Zero(m, false))
+	a.True(Zero(m, true))
+	a.False(Zero(&m, false))
+	a.True(Zero(&m, true))
+
+	m = map[string]string{}
+	a.False(Zero(m, false))
+	a.False(Zero(m, true))
+	a.False(Zero(&m, false))
+	a.False(Zero(&m, true))
+
+	i = m
+	a.False(Zero(m, false))
+	a.False(Zero(m, true))
+	a.False(Zero(&m, false))
+	a.False(Zero(&m, true))
 
 	a.True(Zero(time.Time{}, false))
 	a.True(Zero(time.Time{}, true))

@@ -68,7 +68,7 @@ func Empty(val interface{}, ptr bool) bool {
 	}
 
 	switch v.Kind() {
-	case reflect.Slice:
+	case reflect.Slice, reflect.Map, reflect.Chan:
 		return v.Len() == 0
 	}
 
