@@ -48,20 +48,11 @@ func Nil(val interface{}) bool {
 
 // Empty 判断当前是否为空或是零值
 //
-// Deprecated: 请使用 Zero 代替
-func Empty(val interface{}) bool {
-	return Zero(val, false)
-}
-
-// Zero 判断当前是否为空或是零值
-//
 // ptr 表示当 val 是指针时，是否分析指向的值。
 //
 // 若是容器类型，长度为 0 也将返回 true，
 // 但是 []string{""}空数组里套一个空字符串，不会被判断为空。
-//
-// NOTE: 如果是指针，并不会判断指针指向的值，只判断指针是否为 nil。
-func Zero(val interface{}, ptr bool) bool {
+func Empty(val interface{}, ptr bool) bool {
 	if val == nil {
 		return true
 	}
@@ -76,34 +67,48 @@ func Zero(val interface{}, ptr bool) bool {
 		}
 	}
 
-	// 特定类型的判断
-	switch val := v.Interface().(type) {
-	case time.Time:
-		return val.IsZero()
-	}
-
-	// 内置类型的判断
 	switch v.Kind() {
-	case reflect.Array, reflect.Map, reflect.Slice, reflect.String:
+	case reflect.Slice:
 		return v.Len() == 0
-	case reflect.Ptr, reflect.Interface:
-		return v.IsNil()
-	case reflect.Bool:
-		return !v.Bool()
-	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
-		return v.Int() == 0
-	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:
-		return v.Uint() == 0
-	case reflect.Float32, reflect.Float64:
-		return v.Float() == 0
 	}
 
-	// 空值的判断
-	if reflect.Zero(v.Type()).Interface() == v.Interface() {
+	return zero(v)
+}
+
+// Zero 判断当前是否为空或是零值
+//
+// ptr 表示当 val 是指针时，是否分析指向的值。
+// 在 reflect.Value.IsZero 的基础上对特写类型作为特殊处理，比如 time.IsZero()
+func Zero(val interface{}, ptr bool) bool {
+	if val == nil {
 		return true
 	}
 
-	// 符合 Nil 条件的，都为 Empty
+	v := reflect.ValueOf(val)
+	if ptr {
+		for v.Kind() == reflect.Ptr || v.Kind() == reflect.Interface {
+			if v.IsNil() {
+				return true
+			}
+			v = v.Elem()
+		}
+	}
+	return zero(v)
+}
+
+func zero(v reflect.Value) bool {
+	if v.IsZero() {
+		return true
+	}
+
+	val := v.Interface()
+
+	// 特定类型的判断
+	switch v := val.(type) {
+	case time.Time:
+		return v.IsZero()
+	}
+
 	return Nil(val)
 }
 

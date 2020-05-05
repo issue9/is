@@ -56,6 +56,57 @@ func TestNil(t *testing.T) {
 	a.False(Nil(y))
 }
 
+func TestEmpty(t *testing.T) {
+	a := assert.New(t)
+
+	a.True(Empty(0, false))
+	a.True(Empty(nil, false))
+	a.True(Empty(nil, true))
+	a.True(Empty(0.0, false))
+	a.False(Empty(-0.0001, true))
+
+	var i interface{}
+	a.True(Empty(i, false))
+	a.True(Empty(i, true))
+	a.False(Empty(&i, false))
+	a.True(Empty(&i, true))
+
+	i = []string{}
+	a.True(Empty(i, false))
+	a.True(Empty(i, true))
+	a.False(Empty(&i, false))
+	a.True(Empty(&i, true))
+
+	var x []string
+	a.True(Empty(x, false))
+	a.True(Empty(x, true))
+	a.False(Empty(&x, false))
+	a.True(Empty(&x, true))
+
+	x = []string{""}
+	a.False(Empty(x, false))
+	a.False(Empty(x, true))
+
+	var ii interface{} = []string{}
+	a.True(Empty(ii, false))
+	a.True(Empty(ii, true))
+	a.False(Empty(&ii, false))
+	a.True(Empty(&ii, true))
+
+	a.True(Empty(time.Time{}, false))
+	a.True(Empty(time.Time{}, true))
+	a.False(Empty(&time.Time{}, false))
+	a.True(Empty(&time.Time{}, true))
+	a.False(Empty(time.Now(), false))
+	a.False(Empty(time.Now(), true))
+
+	type obj struct{ Int int }
+	a.True(Empty(obj{Int: 0}, false))
+	a.False(Empty(&obj{Int: 0}, false))
+	a.True(Empty(&obj{Int: 0}, true))
+	a.False(Empty(obj{Int: 1}, false))
+}
+
 func TestZero(t *testing.T) {
 	a := assert.New(t)
 
@@ -71,13 +122,13 @@ func TestZero(t *testing.T) {
 	a.False(Zero(&i, false))
 	a.True(Zero(&i, true))
 
-	var x []string
-	a.True(Zero(x, false))
-	a.True(Zero(x, true))
-	a.False(Zero(&x, false))
-	a.True(Zero(&x, true))
+	i = []string{}
+	a.False(Zero(i, false))
+	a.False(Zero(i, true))
+	a.False(Zero(&i, false))
+	a.False(Zero(&i, true))
 
-	x = []string{}
+	var x []string
 	a.True(Zero(x, false))
 	a.True(Zero(x, true))
 	a.False(Zero(&x, false))
@@ -88,10 +139,10 @@ func TestZero(t *testing.T) {
 	a.False(Zero(x, true))
 
 	var ii interface{} = []string{}
-	a.True(Zero(ii, false))
-	a.True(Zero(ii, true))
+	a.False(Zero(ii, false))
+	a.False(Zero(ii, true))
 	a.False(Zero(&ii, false))
-	a.True(Zero(&ii, true))
+	a.False(Zero(&ii, true))
 
 	a.True(Zero(time.Time{}, false))
 	a.True(Zero(time.Time{}, true))
