@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-// Package is 包提供了一系列的判断函数。
+// Package is 包提供了一系列的判断函数
 package is
 
 import (
