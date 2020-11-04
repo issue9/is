@@ -8,15 +8,6 @@ import (
 	"github.com/issue9/assert"
 )
 
-func TestEraseMinus(t *testing.T) {
-	a := assert.New(t)
-
-	a.Equal(eraseMinus([]byte("abc-def-abc-")), []byte("abcdefabc"))
-	a.Equal(eraseMinus([]byte("abc-def-abc")), []byte("abcdefabc"))
-	a.Equal(eraseMinus([]byte("-_abc-def-abc-")), []byte("_abcdefabc"))
-	a.Equal(eraseMinus([]byte("-abc-d_ef-abc-")), []byte("abcd_efabc"))
-}
-
 func TestISBN(t *testing.T) {
 	a := assert.New(t)
 

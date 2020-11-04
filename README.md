@@ -4,6 +4,8 @@ is
 [![codecov](https://codecov.io/gh/issue9/is/branch/master/graph/badge.svg)](https://codecov.io/gh/issue9/is)
 ======
 
+**不再更新，相关函数可采用 <github.com/issue9/validation/is> 下的内容**
+
 一些常用的验证函数：
 
 ```go
